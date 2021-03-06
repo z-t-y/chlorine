@@ -11,11 +11,19 @@ with open(path.join(basedir, 'README.md'), encoding='utf-8') as f:
 setup(
     name='Chlorine',
     
-    version='0.0.1',
+    version='0.0.2',
     author='Fluorine Team',
     description='The core part of project Fluorine',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://www.github.com/rice0208/chlorine',
 
-    license='GPL-3.0 License'
+    license='GPL-3.0 License',
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    packages=setuptools.find_packages(),
+    python_requires=">=3.6",
     )
