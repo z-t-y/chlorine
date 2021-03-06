@@ -1,6 +1,0 @@
-README.md
-setup.py
-Chlorine.egg-info/PKG-INFO
-Chlorine.egg-info/SOURCES.txt
-Chlorine.egg-info/dependency_links.txt
-Chlorine.egg-info/top_level.txt
