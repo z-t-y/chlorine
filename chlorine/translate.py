@@ -85,5 +85,3 @@ def keyword() -> list:
         '亿遍','亿点点',
         '橘里橘气','紫气东来','磕到了',
     ]
-
-print(len(keyword()))
