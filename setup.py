@@ -11,7 +11,7 @@ with open(path.join(basedir, 'README.md'), encoding='utf-8') as f:
 setup(
     name='Chlorine',
     
-    version='0.0.2',
+    version='0.0.3',
     author='Fluorine Team',
     description='The core part of project Fluorine',
     long_description=long_description,
