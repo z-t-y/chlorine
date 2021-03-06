@@ -1,6 +1,6 @@
 from os import path
 from codecs import open
-from setuptools import setup
+from setuptools import setup, find_packages
 
 basedir = path.abspath(path.dirname(__file__))
 
@@ -8,4 +8,14 @@ basedir = path.abspath(path.dirname(__file__))
 with open(path.join(basedir, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-setup(name='Chlorine')
+setup(
+    name='Chlorine',
+    
+    version='0.0.1',
+    author='Fluorine Team',
+    description='The core part of project Fluorine',
+    long_description=long_description,
+    url='https://www.github.com/rice0208/chlorine',
+
+    license='GPL-3.0 License'
+    )
