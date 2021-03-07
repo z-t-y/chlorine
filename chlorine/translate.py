@@ -1,6 +1,15 @@
+"""
+    chlorine.translate
+    ~~~~~~~~~~~~~~
+    :copyright: (c) 2021 by the Fluorine Team.
+    :license: GPL-3.0, see LICENSE for more details.
+"""
+
 def keyword() -> list:
     """
     The keywords (no translate) of Chlorine.
+
+    :return: chlorine关键字列表
     """
     return [
         '了别','了当','了得','了断',
