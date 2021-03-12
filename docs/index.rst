@@ -12,7 +12,7 @@ Chlorine是一款适用于“语言不精确输入”的应用，其目的在于
    :maxdepth: 2
    :caption: Contents:
 
-   translate
+   constants
 
 
 Indices and tables
