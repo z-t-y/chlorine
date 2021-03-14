@@ -6,3 +6,5 @@
 """
 
 from .translate import Translate
+
+RESERVED_KEYWORDS = Translate.keywords()
