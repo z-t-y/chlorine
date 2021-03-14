@@ -1,9 +1,8 @@
-from chlorine import RESERVED_KEYWORDS, Translate
+from chlorine import Translate
 
 
 def test_reserved_keywords():
-    assert "bilibili" in RESERVED_KEYWORDS
-    assert RESERVED_KEYWORDS == Translate.keywords()
+    assert "bilibili" in Translate.keywords()
 
 
 def test_translate():
