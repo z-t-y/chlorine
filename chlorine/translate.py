@@ -19,7 +19,7 @@ class Translate(object):
 
         :return: chlorine关键字列表
         """
-        RESERVED_KEYWORDS =  [
+        return [
             "[",
 
             "了别", "了当", "了得", "了断",
@@ -104,7 +104,6 @@ class Translate(object):
             "亿遍", "亿点点",
             "橘里橘气", "紫气东来", "磕到了",
         ]
-        return RESERVED_KEYWORDS
 
     def translate(self) -> str:
         """
