@@ -140,3 +140,5 @@ class Translate(object):
         for item in range(len(keywords)):
             string = string.replace(f'[$@{item}]', keywords[item])
         return string
+
+from . import RESERVED_KEYWORDS
