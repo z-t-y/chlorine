@@ -111,14 +111,35 @@ class Translate(object):
         """
         keywords = self.keywords()
         string = self.to_translate
+
+        if '是啥' in string: # directly return "n. -> what" questions
+            if string[-2:] == '是啥':
+                return string[:-2] + '是什么'
+
+        if '是什么' in string: # directly return "n. -> what" questions
+            if string[-3:] == '是什么':
+                return string
+
+        if '是什么意思' in string: # directly return "n. -> what" questions
+            if string[-5:] == '是什么意思':
+                return string[:-5] + '是什么意思'
+
+        if '是什么东西' in string: # directly return "n. -> what" questions
+            if string[-5:] == '是什么东西':
+                return string[:-5] + '是什么'
+
+        if '是什么玩意' in string: # directly return "n. -> what" questions
+            if string[-5:] == '是什么东西':
+                return string[:-5] + '是什么'
+
         for item in range(len(keywords)):
             string = string.replace(keywords[item], f'[$@{item}]')
 
         # translate ready (translation algorithm)
         notFormal = { # not formal uses of chinese
 
-        # keys:   formal
-        # values: informal
+        # keys:   formal   ""
+        # values: informal []
         # algorithm to translate items in values(list) to their keys
 
             '什么': ['啥','啥子','肾么','甚么'],
@@ -128,9 +149,10 @@ class Translate(object):
             '零售': ['另售'],
             '装潢': ['装璜','装黄'],
             '盒饭': ['合饭'],
-            '菠萝': ['波萝'],
+            '菠萝': ['波萝','菠罗'],
             '鸡蛋': ['鸡但','鸡旦'],
             '停车': ['仃车'],
+            '零': ['〇'],
         }
         for item in notFormal.keys():
             for ni in notFormal[item]:

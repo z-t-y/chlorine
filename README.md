@@ -6,8 +6,8 @@ Chlorine是一款适用于“语言不精确输入”的应用，其目的在于
 
 目前Chlorine可以在PyPI中安装，提供了whl文件和.tar.gz的安装包。
 
-```powershell
-pip install chlorine
+```shell
+$ pip install chlorine
 ```
 
 ## Repository Info
