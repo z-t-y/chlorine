@@ -14,4 +14,4 @@ $ pip install chlorine
 
 作者：Fluorine团队（[@z-t-y](https://github.com/z-t-y)与[@rice0208](https://github.com/rice0208)）
 
-Python包：`chlorine`（支持所有平台，Python≥3.6）；URL: [chlorine](https://pypi.org/project/chlorine)
+Python包：`chlorine`（支持所有平台，Python≥3.8）；URL: [chlorine](https://pypi.org/project/chlorine)
