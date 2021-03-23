@@ -25,12 +25,13 @@
             <input class="btn btn-outline-primary col-6 offset-3" style="margin-bottom:2rem;" type="submit">
           </form>
 
-          <p class="text-muted" style="margin:1em;text-align:center;">请访问: <a href="https://github.com/rice0208/chlorine/">GitHub</a> | <a href="https://fluorine.pythonanywhere.com/api">API</a></p>
+          <p class="text-muted" style="margin:1em;text-align:center;">请访问: <a href="https://github.com/rice0208/chlorine/">GitHub</a> | <a href="https://fluorine.pythonanywhere.com/api?word=你好！">API</a></p>
           
           <p>Fluorine是一系列适用于“语言不精确输入”的应用，其目的在于改善搜索引擎中由于不规范中文导致结果偏离的问题。<br>Chlorine是Fluorine的内核，您目前使用的就是它的互动性API，目前Chlorine可以在PyPI中安装，提供了whl文件和.tar.gz的安装包。</p>
           <pre><code>$ pip install chlorine</code></pre>
 
-          <p>调用方式：<pre><code>Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:43:08) [MSC v.1926 32 bit (Intel)] on win32<br>Type "help", "copyright", "credits" or "license" for more information.<br><br>>>> from chlorine import Translate<br><br>>>> Translate('text_you_want').translate()<br>'text-you-want'<br></code></pre></p>
+          <p>调用模块方式：<pre><code>Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:43:08) [MSC v.1926 32 bit (Intel)] on win32<br>Type "help", "copyright", "credits" or "license" for more information.<br><br>>>> from chlorine import Translate<br><br>>>> Translate('text_you_want').translate()<br>'text-you-want'<br></code></pre></p>
+          <p>调用API方式：<pre><code><a href="https://fluorine.pythonanywhere.com/api?word=你好！">https://fluorine.pythonanywhere.com/api?word=你好！</a></code></pre></p>
 
           
           
