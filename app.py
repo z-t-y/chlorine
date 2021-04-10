@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from flask import Flask, render_template, request, url_for, redirect
-from chlorine import Translate
+from chlorine.chlorine import Translate,v
 import time
 
 app = Flask(__name__)

@@ -5,7 +5,7 @@
     :license: GPL-3.0, see LICENSE for more details.
 '''
 
-import re
+import re, jieba
 
 class Translate(object):
     '''
@@ -137,8 +137,13 @@ class Translate(object):
         # values: informal []
         # algorithm to translate items in values(list) to their keys
 
-            '什么': ['啥','啥子','肾么','甚么'],
-            '怎么': ['咋'],
+            '什么': {
+                '什么': ['啥','啥子','肾么','甚么'],
+            }
+            '怎么': {
+                '怎么': ['咋'],
+            }
+            ''
             '炒饭': ['抄饭','吵饭'],
             '充气': ['冲气'],
             '零售': ['另售'],
@@ -152,8 +157,9 @@ class Translate(object):
             '零': ['〇'],
         }
         for item in notFormal.keys():
-            for ni in notFormal[item]:
-                string = string.replace(ni,item)
+            if notFormal[item] in string:
+                for ni in notFormal[item].keys():
+                    string = string.replace(ni,item)
 
         # after translate
         for item in range(len(keywords)):

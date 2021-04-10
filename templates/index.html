@@ -1,0 +1,52 @@
+{% from 'bootstrap/form.html' import render_form %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Fluorine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{ bootstrap.load_css() }}
+  {{ bootstrap.load_js() }}
+</head>
+
+<body style="margin-top:10rem;">
+  <div class="container">
+    <h1 class="col-12" style="text-align: center;margin-bottom: 5rem;">Welcome to Fluorine!</h1>
+    <p class="text-primary"><b>翻译结果： {{ translated }}</b></p>
+
+    <div style="text-align: center;">
+      {{ render_form(form) }}
+    </div>
+
+    <p class="text-muted" style="margin:5em;text-align:center;">
+      请访问: <a href="https://gitee.com/rice0208_admin/chlorine/">Gitee</a> |
+      <a href="https://fluorine.pythonanywhere.com/api?word=你好！">API</a>
+    </p>
+
+    <div class="alert alert-warning" role="alert"><b>Warning:</b> The GitHub repository of this project <b>has been deprecated</b>. (v0.1.0)</div>
+
+    <p>
+      Fluorine是一系列适用于“语言不精确输入”的应用，其目的在于改善搜索引擎中由于不规范中文导致结果偏离的问题。
+    </p>
+
+    <p>
+    <pre><code class="text-white">$ pip install chlorine</code></pre>
+    </p>
+
+    <p>调用模块方式：<pre><code>>>> from chlorine import Translate
+>>> Translate('text-you-want').translate()
+'text-you-want'</code></pre>
+    </p>
+    <p>调用API方式：
+    <pre><code><a href="https://fluorine.pythonanywhere.com/api?word=你好！">https://fluorine.pythonanywhere.com/api?word=你好！</a></code></pre>
+    </p>
+
+    <p class="text-muted" style="margin:3rem;text-align:center">
+      版权&copy;：Fluorine团队<br>Licensed Under GPL-3.0
+    </p>
+  </div>
+</body>
+
+</html>

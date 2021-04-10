@@ -10,3 +10,4 @@ from .translate import Translate
 __all__ = [
     "Translate"
 ]
+v = "0.1.0"
