@@ -12,19 +12,17 @@ def client():
 
 
 def test_index(client):
-    response = client.get("/")
+    response = client.get('/')
     assert response.status_code == 200
-    post_response = client.post("/", data={"text": "我有一只鸡但你有一只鸭"})
+    post_response = client.post('/', data={'text': '我有一只鸡但你有一只鸭'})
     assert post_response.status_code == 200
     data = post_response.get_data(as_text=True)
     print(data)
-    assert "我有一只鸡但你有一只鸭" in data
+    assert '我有一只鸡但你有一只鸭' in data
 
 
 def test_api(client):
-    response = client.get("/api?word=啥")
+    response = client.get('/api?word=啥')
     assert response.status_code == 200
-    data = response.get_json()
-    assert data == {
-        "啥": "什么"
-    }
+    data = response.get_data(as_text=True)
+    assert data == '什么'

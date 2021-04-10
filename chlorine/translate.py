@@ -5,12 +5,15 @@
     :license: GPL-3.0, see LICENSE for more details.
 '''
 
-import re, jieba
+import re
+import jieba
+
 
 class Translate(object):
     '''
     The translation object for chlorine
     '''
+
     def __init__(self, string: str):
         self.to_translate = string
 
@@ -64,7 +67,7 @@ class Translate(object):
             '值得', '显得', '测得', '变得',
             '不得', '彼得', '难得', '没得',
             '免得',
-            
+
             '可的', '打的', '的卢',
 
             # Comments from https://bilibili.com/
@@ -90,7 +93,7 @@ class Translate(object):
             'lol', 'LOL', 'Lol', 'rofl',
             'Rofl', 'ROFL', 'Hahaha', 'hahaha',
             'HaHaHa', 'HAHAHA',
-            
+
             '哔哩哔哩', 'bilibili', 'Bilibili', 'BiliBili',
             'BILIBILI',
 
@@ -116,50 +119,49 @@ class Translate(object):
         if string.endswith('?') or string.endswith("？"):
             string = string[:-1]
 
-        if string.endswith('是啥'):
-            return string[:-2] + '是什么'
-        elif re.search('.*?(是什么|是什么意思)$', string) is not None:
-            return string
-        elif string.endswith('是什么东西'):
-            return string[:-5] + '是什么'
-        elif (res := re.search('.*?是啥玩意(儿?)$', string)) is not None:
-            return (string[:-5] + '是什么') if res.group(1) == '儿' else (string[:-4] + '是什么')
-        elif (res := re.search('.*?是什么玩意(儿?)$', string)) is not None:
-            return (string[:-6] + '是什么') if res.group(1) == '儿' else (string[:-5] + '是什么')
+        reResult = re.match(r'^(.*?是)((啥|什么)(玩意|东西|意思)?(儿|呢|呀|啊)?|谁)$', string)
+        if reResult is not None:
+            if reResult[2] == '谁':
+                return string
+            else:
+                return reResult[1] + '什么' + ('意思' if reResult[4] == '意思' else '')
 
         for item in range(len(keywords)):
             string = string.replace(keywords[item], f'[$@{item}]')
 
+        words = [w for w in jieba.cut(string)]
+
         # translate ready (translation algorithm)
-        notFormal = { # not formal uses of chinese
+        translation_map = {  # not formal uses of chinese
 
-        # keys:   formal   ''
-        # values: informal []
-        # algorithm to translate items in values(list) to their keys
+            # keys:   formal   ''
+            # values: informal []
+            # algorithm to translate items in values(list) to their keys
 
-            '什么': {
-                '什么': ['啥','啥子','肾么','甚么'],
-            }
-            '怎么': {
-                '怎么': ['咋'],
-            }
-            ''
-            '炒饭': ['抄饭','吵饭'],
+            '什么': ['啥', '啥子', '肾么', '甚么'],
+            '怎么': ['咋'],
+            '炒饭': ['抄饭', '吵饭'],
             '充气': ['冲气'],
             '零售': ['另售'],
-            '装潢': ['装璜','装黄'],
+            '装潢': ['装璜', '装黄'],
             '盒饭': ['合饭'],
-            '菠萝': ['波萝','菠罗'],
-            '鸡蛋': ['鸡但','鸡旦'],
-            '笨蛋': ['笨但','笨旦'],
+            '菠萝': ['波萝', '菠罗'],
+            '鸡蛋': ['鸡旦'],
+            '笨蛋': ['笨旦'],
             '我们': ['咱们'],
             '停车': ['仃车'],
             '零': ['〇'],
         }
-        for item in notFormal.keys():
-            if notFormal[item] in string:
-                for ni in notFormal[item].keys():
-                    string = string.replace(ni,item)
+        
+
+        for formal, informals in translation_map.items():
+            for inf in informals:
+                for i in range(0, len(words)):
+                    if words[i] == inf:
+                        words[i] = formal
+
+
+        string = "".join(words)
 
         # after translate
         for item in range(len(keywords)):
